@@ -7,7 +7,7 @@ namespace Quest
 {
     class Program
     {
-        static void Main(string[] args)
+        static void AdventureQuest()
         {
             // Create a few challenges for our Adventurer's quest
             // The "Challenge" Constructor takes three arguments
@@ -21,6 +21,7 @@ namespace Quest
                 "What is the current second?", DateTime.Now.Second, 50);
 
             int randomNumber = new Random().Next() % 10;
+
             Challenge guessRandom = new Challenge("What number am I thinking of?", randomNumber, 25);
 
             Challenge favoriteBeatle = new Challenge(
@@ -64,6 +65,7 @@ namespace Quest
                 challenge.RunChallenge(theAdventurer);
             }
 
+
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
             if (theAdventurer.Awesomeness >= maxAwesomeness)
@@ -79,5 +81,29 @@ namespace Quest
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
             }
         }
+
+        static void Main(string[] args)
+        {
+            AdventureQuest();
+            Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+            string playAgain = Console.ReadLine().ToLower();
+            while (playAgain != "yes" && playAgain != "no")
+            {
+                Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+                playAgain = Console.ReadLine().ToLower();
+            }
+
+
+            if (playAgain == "yes")
+            {
+                AdventureQuest();
+            }
+            else
+            {
+                Console.WriteLine("Your quest has ended! Be gone with you then... ");
+            }
+        }
+
+
     }
 }
