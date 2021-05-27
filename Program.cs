@@ -6,7 +6,30 @@ using System.Collections.Generic;
 namespace Quest
 {
     class Program
+
     {
+        static void Main(string[] args)
+        {
+            AdventureQuest();
+            Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+            string playAgain = Console.ReadLine().ToLower();
+            while (playAgain != "yes" && playAgain != "no")
+            {
+                Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+                playAgain = Console.ReadLine().ToLower();
+            }
+
+
+            if (playAgain == "yes")
+            {
+                AdventureQuest();
+            }
+            else
+            {
+                Console.WriteLine("Your quest has ended! Be gone with you then... ");
+            }
+        }
+
         static void AdventureQuest()
         {
             // Create a few challenges for our Adventurer's quest
@@ -43,10 +66,21 @@ namespace Quest
             int minAwesomeness = 0;
             int maxAwesomeness = 100;
 
+            //Create a new instance of the robe class and set its properties
+            Robe fuligin = new Robe();
+            fuligin.Colors.Add("Darker than Black");
+            fuligin.Colors.Add("Blood red trimmed");
+            fuligin.Length = 42;
+
+
+
             // Make a new "Adventurer" object using the "Adventurer" class
             Console.Write("What is yon name Adventurer?: ");
             string name = Console.ReadLine();
-            Adventurer theAdventurer = new Adventurer(name);
+
+            Adventurer theAdventurer = new Adventurer(name, fuligin);
+            Console.WriteLine(theAdventurer.GetDescription());
+
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
@@ -82,27 +116,7 @@ namespace Quest
             }
         }
 
-        static void Main(string[] args)
-        {
-            AdventureQuest();
-            Console.Write($"Would you like to play again? ('Yes' or 'No') ");
-            string playAgain = Console.ReadLine().ToLower();
-            while (playAgain != "yes" && playAgain != "no")
-            {
-                Console.Write($"Would you like to play again? ('Yes' or 'No') ");
-                playAgain = Console.ReadLine().ToLower();
-            }
 
-
-            if (playAgain == "yes")
-            {
-                AdventureQuest();
-            }
-            else
-            {
-                Console.WriteLine("Your quest has ended! Be gone with you then... ");
-            }
-        }
 
 
     }
