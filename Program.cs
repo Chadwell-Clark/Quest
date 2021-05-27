@@ -12,6 +12,8 @@ namespace Quest
         static void Main(string[] args)
         {
             AdventureQuest();
+
+
             Console.Write($"Would you like to play again? ('Yes' or 'No') ");
             string playAgain = Console.ReadLine().ToLower();
             while (playAgain != "yes" && playAgain != "no")
@@ -76,6 +78,9 @@ namespace Quest
             Hat fedora = new Hat();
             fedora.ShininessLevel = 7;
 
+            Prize prize = new Prize("a three day old herring");
+            // prize = "a herring";
+
 
 
             // Make a new "Adventurer" object using the "Adventurer" class
@@ -104,6 +109,8 @@ namespace Quest
                 challenge.RunChallenge(theAdventurer);
             }
 
+            prize.ShowPrize(theAdventurer);
+            Thread.Sleep(3000);
 
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
