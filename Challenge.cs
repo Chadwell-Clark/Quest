@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Quest
 {
@@ -27,8 +28,10 @@ namespace Quest
         // This method will take an Adventurer object and make that Adventurer perform the challenge
         public void RunChallenge(Adventurer adventurer)
         {
+            Console.Clear();
             Console.Write($"{_text}: ");
             string answer = Console.ReadLine();
+            Console.WriteLine("");
 
             int numAnswer;
             bool isNumber = int.TryParse(answer, out numAnswer);
@@ -37,6 +40,7 @@ namespace Quest
             if (isNumber && numAnswer == _correctAnswer)
             {
                 Console.WriteLine("Well Done!");
+                Thread.Sleep(3000);
 
                 // Note how we access an Adventurer object's property
                 adventurer.Awesomeness += _awesomenessChange;
@@ -44,7 +48,9 @@ namespace Quest
             else
             {
                 Console.WriteLine("You have failed the challenge, there will be consequences.");
+
                 adventurer.Awesomeness -= _awesomenessChange;
+                Thread.Sleep(3000);
             }
 
             // Note how we call an Adventurer object's method
