@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 // Every class in the program is defined within the "Quest" namespace
 // Classes within the same namespace refer to one another without a "using" statement
@@ -72,14 +73,18 @@ namespace Quest
             fuligin.Colors.Add("Blood red trimmed");
             fuligin.Length = 42;
 
+            Hat fedora = new Hat();
+            fedora.ShininessLevel = 7;
+
 
 
             // Make a new "Adventurer" object using the "Adventurer" class
             Console.Write("What is yon name Adventurer?: ");
             string name = Console.ReadLine();
 
-            Adventurer theAdventurer = new Adventurer(name, fuligin);
+            Adventurer theAdventurer = new Adventurer(name, fuligin, fedora);
             Console.WriteLine(theAdventurer.GetDescription());
+            Thread.Sleep(3000);
 
 
             // A list of challenges for the Adventurer to complete
