@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Quest
 
@@ -16,8 +17,10 @@ namespace Quest
         public void ShowPrize(Adventurer adventurer)
         {
             Console.WriteLine("You Win ...");
+            Thread.Sleep(1500);
             if (adventurer.Awesomeness > 0)
             {
+
                 for (int i = 0; i <= adventurer.Awesomeness; i++)
                 {
                     Console.WriteLine(_text);

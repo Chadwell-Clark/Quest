@@ -40,17 +40,25 @@ namespace Quest
             if (isNumber && numAnswer == _correctAnswer)
             {
                 Console.WriteLine("Well Done!");
-                Thread.Sleep(3000);
 
                 // Note how we access an Adventurer object's property
                 adventurer.Awesomeness += _awesomenessChange;
+
+                Console.WriteLine($"Awesomness: {adventurer.Awesomeness}");
+                adventurer.CorrectChallenges++;
+                Console.WriteLine($"Number Correct: {adventurer.CorrectChallenges}");
+                Thread.Sleep(1800);
+
+
             }
             else
             {
                 Console.WriteLine("You have failed the challenge, there will be consequences.");
-
                 adventurer.Awesomeness -= _awesomenessChange;
-                Thread.Sleep(3000);
+                Console.WriteLine($"Awesomness: {adventurer.Awesomeness}");
+
+                Console.WriteLine($"Number Correct: {adventurer.CorrectChallenges}");
+                Thread.Sleep(1800);
             }
 
             // Note how we call an Adventurer object's method
