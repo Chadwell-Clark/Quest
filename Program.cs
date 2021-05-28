@@ -11,29 +11,35 @@ namespace Quest
     {
         static void Main(string[] args)
         {
-            AdventureQuest();
+
+            // Make a new "Adventurer" object using the "Adventurer" class
+            Console.Write("What is yon name Adventurer?: ");
+            string name = Console.ReadLine();
+            int awesomeupgrade = 0;
+
+            AdventureQuest(name, awesomeupgrade);
 
 
-            Console.Write($"Would you like to play again? ('Yes' or 'No') ");
-            string playAgain = Console.ReadLine().ToLower();
-            while (playAgain != "yes" && playAgain != "no")
-            {
-                Console.Write($"Would you like to play again? ('Yes' or 'No') ");
-                playAgain = Console.ReadLine().ToLower();
-            }
+            // Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+            // string playAgain = Console.ReadLine().ToLower();
+            // while (playAgain != "yes" && playAgain != "no")
+            // {
+            //     Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+            //     playAgain = Console.ReadLine().ToLower();
+            // }
 
 
-            if (playAgain == "yes")
-            {
-                AdventureQuest();
-            }
-            else
-            {
-                Console.WriteLine("Your quest has ended! Be gone with you then... ");
-            }
+            // if (playAgain == "yes")
+            // {
+            //     AdventureQuest(name);
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Your quest has ended! Be gone with you then... ");
+            // }
         }
 
-        static void AdventureQuest()
+        static void AdventureQuest(string name, int awesomeupgrade)
         {
             // Create a few challenges for our Adventurer's quest
             // The "Challenge" Constructor takes three arguments
@@ -67,7 +73,7 @@ namespace Quest
             //  If an Adventurer has an Awesomeness greater than the max, they are truly awesome
             //  If an Adventurer has an Awesomeness less than the min, they are terrible
             int minAwesomeness = 0;
-            int maxAwesomeness = 100;
+            int maxAwesomeness = 200;
 
             //Create a new instance of the robe class and set its properties
             Robe fuligin = new Robe();
@@ -83,13 +89,17 @@ namespace Quest
 
 
 
-            // Make a new "Adventurer" object using the "Adventurer" class
-            Console.Write("What is yon name Adventurer?: ");
-            string name = Console.ReadLine();
+            // // Make a new "Adventurer" object using the "Adventurer" class
+            // Console.Write("What is yon name Adventurer?: ");
+            // string name = Console.ReadLine();
 
-            Adventurer theAdventurer = new Adventurer(name, fuligin, fedora);
+            // int correctChallenges = new int();
+            // correctChallenges = 0;
+
+            Adventurer theAdventurer = new Adventurer(name, fuligin, fedora, awesomeupgrade);
             Console.WriteLine(theAdventurer.GetDescription());
-            Thread.Sleep(3000);
+            Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+            Thread.Sleep(2000);
 
 
             // A list of challenges for the Adventurer to complete
@@ -103,6 +113,9 @@ namespace Quest
                 favoriteBeatle
             };
 
+            // List<int> randomChallenge = new List<int>();
+
+            // for (int i = 0; i <= )
             // Loop through all the challenges and subject the Adventurer to them
             foreach (Challenge challenge in challenges)
             {
@@ -110,26 +123,47 @@ namespace Quest
             }
 
             prize.ShowPrize(theAdventurer);
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
+
 
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
             if (theAdventurer.Awesomeness >= maxAwesomeness)
             {
                 Console.WriteLine("YOU DID IT! You are truly awesome!");
+                Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
             }
             else if (theAdventurer.Awesomeness <= minAwesomeness)
             {
                 Console.WriteLine("Get out of my sight. Your lack of awesomeness offends me!");
+                Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+
             }
             else
             {
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
+                Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+            }
+
+            Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+            string playAgain = Console.ReadLine().ToLower();
+            while (playAgain != "yes" && playAgain != "no")
+            {
+                Console.Write($"Would you like to play again? ('Yes' or 'No') ");
+                playAgain = Console.ReadLine().ToLower();
+            }
+
+
+            if (playAgain == "yes")
+            {
+                awesomeupgrade = theAdventurer.CorrectChallenges * 10;
+                AdventureQuest(name, awesomeupgrade);
+
+            }
+            else
+            {
+                Console.WriteLine("Your quest has ended! Be gone with you then... ");
             }
         }
-
-
-
-
     }
 }
