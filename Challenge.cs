@@ -29,6 +29,8 @@ namespace Quest
         public void RunChallenge(Adventurer adventurer)
         {
             Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine();
             Console.Write($"{_text}: ");
             string answer = Console.ReadLine();
             Console.WriteLine("");

@@ -13,6 +13,9 @@ namespace Quest
         {
 
             // Make a new "Adventurer" object using the "Adventurer" class
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine();
             Console.Write("What is yon name Adventurer?: ");
             string name = Console.ReadLine();
             int awesomeupgrade = 0;
@@ -113,13 +116,24 @@ namespace Quest
                 favoriteBeatle
             };
 
-            // List<int> randomChallenge = new List<int>();
+            List<int> randomInts = new List<int>();
+            Random r = new Random();
 
-            // for (int i = 0; i <= )
-            // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+            while (randomInts.Count < 3)
             {
-                challenge.RunChallenge(theAdventurer);
+                int singleInt = r.Next(challenges.Count - 1);
+                if (!randomInts.Contains(singleInt))
+                {
+                    randomInts.Add(singleInt);
+                }
+            }
+            // Loop through  the random challenges and subject the Adventurer to them
+            for (int i = 0; i < randomInts.Count; i++)
+
+
+            {
+
+                challenges[randomInts[i]].RunChallenge(theAdventurer);
             }
 
             prize.ShowPrize(theAdventurer);
@@ -132,19 +146,23 @@ namespace Quest
             {
                 Console.WriteLine("YOU DID IT! You are truly awesome!");
                 Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+                Thread.Sleep(2000);
+
             }
             else if (theAdventurer.Awesomeness <= minAwesomeness)
             {
                 Console.WriteLine("Get out of my sight. Your lack of awesomeness offends me!");
                 Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+                Thread.Sleep(2000);
 
             }
             else
             {
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
                 Console.WriteLine($"Your awesomeness is {theAdventurer.Awesomeness}");
+                Thread.Sleep(2000);
             }
-
+            Console.Clear();
             Console.Write($"Would you like to play again? ('Yes' or 'No') ");
             string playAgain = Console.ReadLine().ToLower();
             while (playAgain != "yes" && playAgain != "no")
